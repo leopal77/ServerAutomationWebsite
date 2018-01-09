@@ -1,0 +1,44 @@
+.button
+{
+	width: 50%;
+	background-color: none;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top:400px; 
+
+}
+
+.on[type=button]
+{
+    
+    width: 49%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+   	display:inline-block; 
+   	    outline-offset: 0px !important;
+    outline: none !important;
+}
+input.off[type=button]
+{
+    
+    width: 49%;
+    background-color: #ff1a1a;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+        outline-offset: 0px !important;
+    outline: none !important;
+   	display:inline-block; 
+}
+input.on[type=button]:hover {
+    background-color: #45a049;
+}
+
+input.off[type=button]:hover {
+    background-color: #e60000;
+} 
+ 
