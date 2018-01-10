@@ -1,14 +1,15 @@
 .button
 {
-	width: 50%;
-	background-color: none;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top:400px; 
-
+    width: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+   
+    
 }
 
-.on[type=button]
+#start_button
 {
     
     width: 49%;
@@ -21,7 +22,8 @@
    	    outline-offset: 0px !important;
     outline: none !important;
 }
-input.off[type=button]
+
+#shutdown_button
 {
     
     width: 49%;
@@ -34,11 +36,11 @@ input.off[type=button]
     outline: none !important;
    	display:inline-block; 
 }
-input.on[type=button]:hover {
+#start_button:hover {
     background-color: #45a049;
 }
 
-input.off[type=button]:hover {
+#shutdown_button:hover {
     background-color: #e60000;
 } 
  

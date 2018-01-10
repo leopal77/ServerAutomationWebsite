@@ -5,9 +5,16 @@
 </head>
 <body>
 <?php
-    if (isset($_POST['on']))
+    if (isset($_POST['button1']))
     {
-         echo shell_exec('/var/www/html/scripts/wake_dell.sh');
+         //echo exec('whoami');
+         echo shell_exec('/var/www/scripts/wake_dell.sh');
+         //$timeout = 10;
+         //$socket = @fsockopen( '192.168.1.24',80, $errno, $errstr, $timeout );
+         //$online = ( $socket !== false );
+         //echo $online;
+
+var_dump( $online );
     }
         if (isset($_POST['button2']))
     {
@@ -15,23 +22,19 @@
          echo exec('whoami');
     }
     
+    
+    
 ?>
 <div class="button">
     <form method="post">
     <p>
-        <button class="on" name="button1">Start</button> 
-       <!-- <input class="on" type="button" name="on" value="ΕΝΕΡΓΟΠΟΙΗΣΗ">-->
+        <button id="start_button" name="button1">Start</button> 
     </p>
     </form>
         <form method="post">
     <p>
-        <button name="button2">Shutdown</button>
+        <button id="shutdown_button" name="button2">Shutdown</button>
     </p>
     </form>
-
-
-			
-			<input class="off" type="button" name="off" value="AΠΕΝΕΡΓΟΠΟΙΗΣΗ"  ">
-
 </div>
 </body>
