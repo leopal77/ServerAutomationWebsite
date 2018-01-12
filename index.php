@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" type="text/css" href="css/site.css">
-</head>
-<body>
-<?php
-    if (isset($_POST['button1']))
-    {
-         //echo exec('whoami');
-         echo shell_exec('/var/www/scripts/wake_dell.sh');
-         //$timeout = 10;
-         //$socket = @fsockopen( '192.168.1.24',80, $errno, $errstr, $timeout );
-         //$online = ( $socket !== false );
-         //echo $online;
 
-var_dump( $online );
-    }
-        if (isset($_POST['button2']))
-    {
-         echo exec('sudo /var/www/scripts/shutdown.sh');
-         echo exec('whoami');
-    }
-    
-    
-    
-?>
-<div class="button">
+<link rel="stylesheet" type="text/css" href="css/site.css">
+<script src="js/scripts.js"></script>
+
+<body>
+
+
+
+</head>
+  
+
+
+
+<div id="test" class="button">
+<img id="myImage" src="resources/pic_bulboff.gif" style="width:10%">
+
     <form method="post">
     <p>
         <button id="start_button" name="button1">Start</button> 
@@ -38,3 +29,24 @@ var_dump( $online );
     </form>
 </div>
 </body>
+<?php
+    if (isset($_POST['button1']))
+    {
+         
+         $server_status = shell_exec('/var/www/scripts/wake_dell.sh');
+         if($server_status==0)
+            {
+            echo "Active";
+            echo '<script type="text/javascript">',
+                'lights();',
+               '</script>';
+            }
+
+
+    }
+        if (isset($_POST['button2']))
+    {
+         exec('sudo /var/www/scripts/shutdown.sh');
+        
+    }
+?>
