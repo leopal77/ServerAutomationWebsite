@@ -4,19 +4,15 @@
 
 <link rel="stylesheet" type="text/css" href="css/site.css">
 <script src="js/scripts.js"></script>
+<?php include 'functions.php';?>
+</head>
 
 <body>
-
-
-
-</head>
-  
-
 
 <div class="light">
     <img id="myImage"  src="resources/pic_bulboff.gif" height="120" >
 </div>
- <div class="spinner" id="loading">
+ <div class="spinner" id="load">
   <div class="bounce1"></div>
   <div class="bounce2"></div>
   <div class="bounce3"></div>
@@ -27,47 +23,31 @@
  
         <form method="post">
         <p>
-            <button id="shutdown_button" name="button2">Shutdown</button>
+            <button id="shutdown_button" name="shutdown_button">Shutdown</button>
         </p>
         </form>              
         <form method="post">
         <p>
-            <button id="start_button" name="button1">Start</button> 
+            <button id="start_button" onclick="loading()" name="start_button">Start</button> 
         </p>
         </form>
     </div>
 
 </div>
+<?php 
+checkIfServerIsRunning();
+?>
 </body>
 <?php
-    if (isset($_POST['button1']))
+    if (isset($_POST['start_button']))
     {
-        $server_status=1;
-        while($server_status)
-        {
-
-             $server_status = shell_exec('/var/www/scripts/wake_dell.sh');
-
-             if($server_status==0)
-                {
-                echo "Active";
-                echo '<script type="text/javascript">',
-                    'lights();',
-                   '</script>';
-                }
-                else
-                {
-                echo '<script type="text/javascript">',
-                    'var load=document.getElementById("loading");',
-                    'load.style.display="block";',
-                   '</script>';                    
-                }
-        }            
-
+      wakeServer();
+      checkIfServerIsRunning();
     }
-    if (isset($_POST['button2']))
+    if (isset($_POST['shutdown_button']))
     {
          exec('sudo /var/www/scripts/shutdown.sh');
+         checkIfServerIsRunning();
         
     }
 ?>
